@@ -1,0 +1,14 @@
+apply plugin: 'java'
+jar {
+    manifest {
+        attributes 'Main-Class': 'batesstamp.BatesStamp'
+    }
+}
+
+dependencies {
+             compile 'org.apache.pdfbox:pdfbox:2.0.4'
+}
+
+repositories {
+             mavenCentral()
+}
