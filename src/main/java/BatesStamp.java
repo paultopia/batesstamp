@@ -40,10 +40,10 @@ public class BatesStamp {
 	}
 
     public static void main(String[] args) throws IOException {
-        float stringWidth = font.getStringWidth( message )*fontSize/1000f;
         String file = args[0];
         String message = args[1];
         String outfile = args[2];
+        float stringWidth = font.getStringWidth(message)*fontSize/1000f;
         try (PDDocument doc = PDDocument.load(new File(file))) {
             for (PDPage page : doc.getPages()){
         	addToPage(doc, page, stringWidth, message);
