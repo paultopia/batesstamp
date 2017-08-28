@@ -15,19 +15,18 @@ import org.apache.pdfbox.util.Matrix;
 // based on http://svn.apache.org/repos/asf/pdfbox/trunk/examples/src/main/java/org/apache/pdfbox/examples/pdmodel/AddMessageToEachPage.java
 
 public class BatesStamp {
-
 	private static float fontSize = 36.0f;
 	private static PDFont font = PDType1Font.HELVETICA_BOLD;
 
 	private static void addToPage(PDDocument doc, PDPage page, float stringWidth, String message){
-		PDRectangle pageSize = page.getMediaBox();
-		int rotation = page.getRotation();
-        boolean rotate = rotation == 90 || rotation == 270;
-        float pageWidth = rotate ? pageSize.getHeight() : pageSize.getWidth();
-        float pageHeight = rotate ? pageSize.getWidth() : pageSize.getHeight();
-        float centerX = rotate ? pageHeight/2f : (pageWidth - stringWidth)/2f;
-        float centerY = rotate ? (pageWidth - stringWidth)/2f : pageHeight/2f;
-        try (PDPageContentStream contentStream = new PDPageContentStream(doc, page, AppendMode.APPEND, true, true)) {
+	    PDRectangle pageSize = page.getMediaBox();
+	    int rotation = page.getRotation();
+	    boolean rotate = rotation == 90 || rotation == 270;
+	    float pageWidth = rotate ? pageSize.getHeight() : pageSize.getWidth();
+	    float pageHeight = rotate ? pageSize.getWidth() : pageSize.getHeight();
+	    float centerX = rotate ? pageHeight/2f : (pageWidth - stringWidth)/2f;
+	    float centerY = rotate ? (pageWidth - stringWidth)/2f : pageHeight/2f;
+	    try (PDPageContentStream contentStream = new PDPageContentStream(doc, page, AppendMode.APPEND, true, true)) {
             contentStream.beginText();
             contentStream.setFont( font, fontSize );
             contentStream.setNonStrokingColor(255, 0, 0);
@@ -37,8 +36,7 @@ public class BatesStamp {
             	contentStream.setTextMatrix(Matrix.getTranslateInstance(centerX, centerY));
             contentStream.showText(message);
             contentStream.endText();
-            }
-        
+        }
 	}
 
     public static void main(String[] args) throws IOException {
@@ -47,12 +45,10 @@ public class BatesStamp {
         String message = args[1];
         String outfile = args[2];
         try (PDDocument doc = PDDocument.load(new File(file))) {
-        for (PDPage page : doc.getPages()){
+            for (PDPage page : doc.getPages()){
         	addToPage(doc, page, stringWidth, message);
         	}
         doc.save(outfile);
         }
-        
     }
-
 }
