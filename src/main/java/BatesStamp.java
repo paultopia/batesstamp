@@ -16,7 +16,7 @@ import org.apache.pdfbox.util.Matrix;
 public class BatesStamp {
     private static float fontSize = 12.0f;
     private static PDFont font = PDType1Font.HELVETICA_BOLD;
-    
+
     private static void addToPage(PDDocument doc, PDPage page, String pg) throws IOException {
         try (PDPageContentStream contentStream = new PDPageContentStream(doc, page, AppendMode.APPEND, true, true)) {
             contentStream.beginText();
@@ -27,7 +27,7 @@ public class BatesStamp {
             contentStream.endText();
         }
     }
-    
+
     public static void main(String[] args) throws IOException {
         String file = args[0];
         String outfile = args[1];
