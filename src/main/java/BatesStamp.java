@@ -18,7 +18,7 @@ public class BatesStamp {
 	private static float fontSize = 36.0f;
 	private static PDFont font = PDType1Font.HELVETICA_BOLD;
 
-	private static void addToPage(PDDocument doc, PDPage page, float stringWidth, String message){
+    private static void addToPage(PDDocument doc, PDPage page, float stringWidth, String message) throws IOException {
 	    PDRectangle pageSize = page.getMediaBox();
 	    int rotation = page.getRotation();
 	    boolean rotate = rotation == 90 || rotation == 270;

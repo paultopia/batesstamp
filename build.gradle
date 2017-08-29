@@ -1,4 +1,10 @@
-apply plugin: 'java'
+plugins {
+id 'com.github.johnrengelman.shadow' version '2.0.1'
+id 'java'
+}
+
+
+
 jar {
     manifest {
         attributes 'Main-Class': 'batesstamp.BatesStamp'
@@ -6,9 +12,10 @@ jar {
 }
 
 dependencies {
-             compile 'org.apache.pdfbox:pdfbox:2.0.4'
+             compile 'org.apache.pdfbox:pdfbox:2.0.4'    
 }
 
 repositories {
-             mavenCentral()
+             mavenCentral()          
 }
+
