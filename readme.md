@@ -13,3 +13,5 @@ Usage:
 4.  `java -jar batestamp.jar infile outfile` where infile is the original file (e.g. myfile.pdf) and outfile is the name for the page-numbered file (myfile-with-pages.pdf, say).
 
 That's it.
+
+(This is barely even any of my own code; the jar is mostly PDFBox code, and it's actually based on a PDFBox example.  So all that stuff is under the Apache license that Apache put it under; the small rudiments of my own in here code are hereby committed to the public domain.)
